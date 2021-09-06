@@ -1,1 +1,240 @@
-<p>advanced-scrollspy works!</p>
+<main>
+  <div>
+    <h1>Smooth Scrolling Sticky ScrollSpy Navigation</h1>
+    <p><em>Want an explanation of how this works?<br />&rarr; <a href="https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/" target="_top">https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/</a></em></p>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>…</p>
+    </section>
+
+    <section id="request-response">
+      <h2>Request &amp; Response</h2>
+      <p>…</p>
+    </section>
+
+    <section id="authentication">
+      <h2>Authentication</h2>
+      <p>…</p>
+    </section>
+
+    <section id="endpoints">
+      <h2>Endpoints</h2>
+
+      <section id="endpoints--root">
+        <h3>Root</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--cities-overview">
+        <h3>Cities Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-detail">
+        <h3>City Detail</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-config">
+        <h3>City Config</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-spots-overview">
+        <h3>City Spots Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-spot-detail">
+        <h3>City Spot Detail</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-icons-overview">
+        <h3>City Icons Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-icon-detail">
+        <h3>City Icon Detail</h3>
+        <p>…</p>
+      </section>
+
+    </section>
+
+    <section id="formarray">
+      <h2>Form Array</h2>
+
+      <br>
+
+      <form [formGroup]="navigationForm" style="font-size: 14px !important;">
+        <div formArrayName="units">
+
+          <div *ngFor="let unit of navigationForm.get('units')['controls']; let x = index;">
+            <div  [formGroupName]="x">
+
+              <section id="{{'formarray--'+ x}}">
+                <h3>{{ unit.value.customerName ? unit.value.customerName : 'Unfilled' }}</h3>
+
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Customer Name</mat-label>
+                      <input class="mat-input-value" formControlName="customerName" matInput>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="content-direction" style="float: left;">
+
+                      <button *ngIf="navigationForm.valid" (click)="addUnit()"
+                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Add File">
+                        <mat-icon>add</mat-icon>
+                      </button>
+
+                      <button *ngIf="navigationForm.get('units')['controls'].length > 1" (click)="removeUnit(x)"
+                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Remove File">
+                        <mat-icon>delete_outline</mat-icon>
+                      </button>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Customer Number</mat-label>
+                      <input class="mat-input-value" formControlName="customerNumber" matInput>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="content-direction" style="float: left;">
+                      <button (click)="getFormDataTest(unit)"
+                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="getFormDataTest">
+                        <mat-icon>bug_report</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Phone Number</mat-label>
+                      <input class="mat-input-value" formControlName="phoneNo" matInput>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="content-direction" style="float: left;">
+                      <button (click)="getChildArray()"
+                        mat-mini-fab type="button" style="margin-right: 5px;" color="primary" matTooltip="getChildArray">
+                        <mat-icon>bug_report</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Description</mat-label>
+                      <input class="mat-input-value" formControlName="description" matInput>
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Email</mat-label>
+                      <input class="mat-input-value" formControlName="email" matInput>
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Height</mat-label>
+                      <input class="mat-input-value" formControlName="height" matInput>
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6">
+                    <mat-form-field appearance="outline" style="width: 99%;">
+                      <mat-label>Body Mass Index</mat-label>
+                      <input class="mat-input-value" formControlName="BMI" matInput>
+                    </mat-form-field>
+                  </div>
+
+
+                </div>
+
+              </section>
+
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+
+
+    </section>
+
+    <section id="links">
+      <h2>Links</h2>
+      <p>…</p>
+    </section>
+
+    <section id="expanders">
+      <h2>Expanders</h2>
+      <p>…</p>
+    </section>
+
+    <section id="filters">
+      <h2>Filters</h2>
+      <p>…</p>
+    </section>
+
+  </div>
+
+  <nav class="section-nav">
+    <ol>
+      <li *ngFor="let nav of DYNAMICNAV">
+        <a [href]="nav.href">{{nav.name}}</a>
+
+        <ul *ngIf="nav.nest != null">
+          <li *ngFor="let subNav of nav.nest">
+            <a [href]="subNav.href">{{subNav.name}}</a>
+          </li>
+        </ul>
+
+      </li>
+    </ol>
+  </nav>
+
+</main>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-simple-scrollspy',
@@ -7,9 +7,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SimpleScrollspyComponent implements OnInit {
 
-  constructor() { }
+  sections = [];
+  navLinks = [];
 
-  ngOnInit(): void {
+  constructor(private _elementRef: ElementRef) {}
+
+  ngOnInit() {
+    this.sections = this._elementRef.nativeElement.querySelectorAll('section');
+    this.navLinks = this._elementRef.nativeElement.querySelectorAll('header nav a');
+  }
+
+  @HostListener('window:scroll', ['$event']) onScroll(event) {
+    for (const section of this.sections) {
+      const top = window.scrollY;
+      const offset = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+
+      if (top >= offset && top < offset + height){
+        this.navLinks.forEach(links => {
+          links.classList.remove('active');
+          document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+        });
+      }
+    }
   }
 
 }
