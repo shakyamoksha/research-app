@@ -4,7 +4,10 @@ import { DashboardComponent } from './component/dashboard.component';
 
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent}
+  {path: '', component: DashboardComponent, children: [
+    {path: 'advancedscroll', loadChildren: () => import('../components/advanced-scrollspy/advanced-scrollspy.module').then(m => m.AdvancedScrollspyModule)},
+    {path: 'simplescroll', loadChildren: () => import('../components/simple-scrollspy/simple-scrollspy.module').then(m => m.SimpleScrollspyModule)}
+  ]}
 ];
 
 @NgModule({
