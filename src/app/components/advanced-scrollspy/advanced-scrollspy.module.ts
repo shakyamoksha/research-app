@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AdvancedScrollspyRoutingModule } from './advanced-scrollspy-routing.module';
 import { AdvancedScrollspyComponent } from './components/advanced-scrollspy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from 'src/app/shared/material-design.module';
+import {MaterialModule} from '../../shared/material-design.module';
+
 
 
 @NgModule({
