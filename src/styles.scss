@@ -1,1 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+// html, body { height: 100%; }
+// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+.content-direction {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+
+.mat-input-value{
+  font-size: 22px;
+  line-height: 32px;
+  color: #0c0c0c
+}
+
+.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label:not(.mat-empty):not(.mat-form-field-empty) {
+  /* // color
+  // scale or font-size */
+  font-size: 22px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.5em 0 0.5em 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0.50em 0;
+}
