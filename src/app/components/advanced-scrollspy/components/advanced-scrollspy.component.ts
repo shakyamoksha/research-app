@@ -1,5 +1,6 @@
 import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-advanced-scrollspy',
@@ -8,19 +9,21 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 })
 export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy {
   DYNAMICNAV = [];
-
+  url;
   observer: any;
   navigationForm: FormGroup;
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private _elementRef: ElementRef,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
     this.createForm();
     this.intersectionObserver();
+    this.url = '/advancedscroll';
   }
 
   ngAfterViewChecked() {
@@ -45,18 +48,18 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
 
     console.log(sections);
 
-    for(const section of sections) { // For Parent Sections
+    for (const section of sections) { // For Parent Sections
 
-      if(!section.id.includes('--')){
+      if (!section.id.includes('--')){
 
         const nest = [];
         const obj = {href: `#${section.id}`, name: section.firstChild.innerText, nest};
 
-        for(const sub of sections){ // For Child Sections -- to be refactored
+        for (const sub of sections){ // For Child Sections -- to be refactored
 
-          if(sub.id.includes(`${section.id}--`)){
-            const obj = {href: `#${sub.id}`, name: sub.firstChild.innerText};
-            nest.push(obj);
+          if (sub.id.includes(`${section.id}--`)){
+            const objet = {href: `#${sub.id}`, name: sub.firstChild.innerText};
+            nest.push(objet);
           }
 
         }
@@ -72,6 +75,10 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
     }
   }
 
+  scrollTo(fragment: string): void {
+    this.router.navigateByUrl(this.url + fragment);
+  }
+
   intersectionObserver(){
     const options = {root: null, rootMargin: '0px', threshold: 0};
 
@@ -82,10 +89,10 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
         // console.log(entry.intersectionRatio);
         if (entry.intersectionRatio > 0) {
           // console.log('add');
-          document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.add('active');
+          document.querySelector(`nav li a[id="#${id}"]`).parentElement.classList.add('active');
         } else {
           // console.log('remove');
-          document.querySelector(`nav li a[href="#${id}"]`).parentElement.classList.remove('active');
+          document.querySelector(`nav li a[id="#${id}"]`).parentElement.classList.remove('active');
         }
       });
 

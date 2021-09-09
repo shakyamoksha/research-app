@@ -225,11 +225,11 @@
   <nav class="section-nav">
     <ol>
       <li *ngFor="let nav of DYNAMICNAV">
-        <a [href]="nav.href">{{nav.name}}</a>
+        <a style="cursor: pointer" [id]="nav.href" (click)="scrollTo(nav.href)">{{nav.name}}</a>
 
         <ul *ngIf="nav.nest != null">
           <li *ngFor="let subNav of nav.nest">
-            <a [href]="subNav.href">{{subNav.name}}</a>
+            <a style="cursor: pointer" [id]="subNav.href" (click)="scrollTo(subNav.href)">{{subNav.name}}</a>
           </li>
         </ul>
 
