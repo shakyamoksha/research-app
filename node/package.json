@@ -1,0 +1,15 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Simple Express Server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Deeptish Sookun",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1"
+  }
+}
