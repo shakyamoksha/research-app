@@ -8,61 +8,6 @@
       <p>…</p>
     </section>
 
-    <section id="request-response">
-      <h2>Request &amp; Response</h2>
-      <p>…</p>
-    </section>
-
-    <section id="authentication">
-      <h2>Authentication</h2>
-      <p>…</p>
-    </section>
-
-    <section id="endpoints">
-      <h2>Endpoints</h2>
-
-      <section id="endpoints--root">
-        <h3>Root</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--cities-overview">
-        <h3>Cities Overview</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-detail">
-        <h3>City Detail</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-config">
-        <h3>City Config</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-spots-overview">
-        <h3>City Spots Overview</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-spot-detail">
-        <h3>City Spot Detail</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-icons-overview">
-        <h3>City Icons Overview</h3>
-        <p>…</p>
-      </section>
-
-      <section id="endpoints--city-icon-detail">
-        <h3>City Icon Detail</h3>
-        <p>…</p>
-      </section>
-
-    </section>
-
     <section id="formarray">
       <h2>Form Array</h2>
 
@@ -91,12 +36,12 @@
                     <div class="content-direction" style="float: left;">
 
                       <button *ngIf="navigationForm.valid" (click)="addUnit()"
-                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Add File">
+                              mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Add File">
                         <mat-icon>add</mat-icon>
                       </button>
 
                       <button *ngIf="navigationForm.get('units')['controls'].length > 1" (click)="removeUnit(x)"
-                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Remove File">
+                              mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Remove File">
                         <mat-icon>delete_outline</mat-icon>
                       </button>
 
@@ -110,14 +55,14 @@
                   <div class="col-md-6">
                     <mat-form-field appearance="outline" style="width: 99%;">
                       <mat-label>Customer Number</mat-label>
-                      <input class="mat-input-value" formControlName="customerNumber" matInput>
+                      <input localizedNumericInput class="mat-input-value" formControlName="customerNumber" matInput>
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-6">
                     <div class="content-direction" style="float: left;">
                       <button (click)="getFormDataTest(unit)"
-                        mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="getFormDataTest">
+                              mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="getFormDataTest">
                         <mat-icon>bug_report</mat-icon>
                       </button>
                     </div>
@@ -137,7 +82,7 @@
                   <div class="col-md-6">
                     <div class="content-direction" style="float: left;">
                       <button (click)="getChildArray()"
-                        mat-mini-fab type="button" style="margin-right: 5px;" color="primary" matTooltip="getChildArray">
+                              mat-mini-fab type="button" style="margin-right: 5px;" color="primary" matTooltip="getChildArray">
                         <mat-icon>bug_report</mat-icon>
                       </button>
                     </div>
@@ -202,6 +147,61 @@
         </div>
       </form>
 
+
+    </section>
+
+    <section id="request-response">
+      <h2>Request &amp; Response</h2>
+      <p>…</p>
+    </section>
+
+    <section id="authentication">
+      <h2>Authentication</h2>
+      <p>…</p>
+    </section>
+
+    <section id="endpoints">
+      <h2>Endpoints</h2>
+
+      <section id="endpoints--root">
+        <h3>Root</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--cities-overview">
+        <h3>Cities Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-detail">
+        <h3>City Detail</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-config">
+        <h3>City Config</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-spots-overview">
+        <h3>City Spots Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-spot-detail">
+        <h3>City Spot Detail</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-icons-overview">
+        <h3>City Icons Overview</h3>
+        <p>…</p>
+      </section>
+
+      <section id="endpoints--city-icon-detail">
+        <h3>City Icon Detail</h3>
+        <p>…</p>
+      </section>
 
     </section>
 
