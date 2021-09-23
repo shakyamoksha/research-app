@@ -1,4 +1,14 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  DoCheck,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import {Router} from '@angular/router';
 
@@ -129,7 +139,9 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
   addUnit() {
     const control = this.navigationForm.controls[`units`] as FormArray;
     control.push(this.getUnit());
-    this.getNavigation();
+    setTimeout(() => {
+      this.getNavigation();
+    }, 250);
   }
 
   /*** Remove unit row from form on click delete button **/
