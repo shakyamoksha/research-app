@@ -7,7 +7,7 @@ import {
   ElementRef,
   HostListener,
   OnDestroy,
-  OnInit
+  OnInit, QueryList, ViewChildren
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import {Router} from '@angular/router';
@@ -22,6 +22,8 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
   url;
   observer: any;
   navigationForm: FormGroup;
+
+  @ViewChildren('sections') sections: QueryList<ElementRef>;
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -54,35 +56,31 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
 
   getNavigation(){
     this.DYNAMICNAV = [];
-    const sections = this._elementRef.nativeElement.querySelectorAll('section[id]');
 
-    console.log(sections);
+    this.sections.forEach(section => { // For Parent Sections
 
-    for (const section of sections) { // For Parent Sections
-
-      if (!section.id.includes('--')){
+      if (!section.nativeElement.id.includes('--')){
 
         const nest = [];
-        const obj = {href: `#${section.id}`, name: section.firstChild.innerText, nest};
+        const obj = {href: `#${section.nativeElement.id}`, name: section.nativeElement.firstChild.innerText, nest};
 
-        for (const sub of sections){ // For Child Sections -- to be refactored
-
-          if (sub.id.includes(`${section.id}--`)){
-            const objet = {href: `#${sub.id}`, name: sub.firstChild.innerText};
+        this.sections.forEach(sub => { // For Child Sections -- to be refactored
+          if (sub.nativeElement.id.includes(`${section.nativeElement.id}--`)){
+            const objet = {href: `#${sub.nativeElement.id}`, name: sub.nativeElement.firstChild.innerText};
             nest.push(objet);
           }
+        });
 
-        }
         this.DYNAMICNAV.push(obj);
       }
-    }
+    });
+
   }
 
   @HostListener('window:scroll', ['$event']) onScroll(event) {
-    const vectors = this._elementRef.nativeElement.querySelectorAll('section[id]');
-    for (const vector of vectors) {
-      this.observer.observe(vector);
-    }
+    this.sections.forEach(vector => {
+      this.observer.observe(vector.nativeElement);
+    });
   }
 
   scrollTo(fragment: string): void {
@@ -141,14 +139,16 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
     control.push(this.getUnit());
     setTimeout(() => {
       this.getNavigation();
-    }, 250);
+    }, 25);
   }
 
   /*** Remove unit row from form on click delete button **/
   removeUnit(x: number) {
     const control = this.navigationForm.controls[`units`] as FormArray;
     control.removeAt(x);
-    this.getNavigation();
+    setTimeout(() => {
+      this.getNavigation();
+    }, 25);
   }
 
   /*** This is one of the way how clear units fields. */

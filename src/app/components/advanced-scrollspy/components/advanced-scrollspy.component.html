@@ -15,77 +15,77 @@
       </em>
     </p>
 
-    <section id="introduction">
+    <section #sections id="introduction">
       <h2>Introduction</h2>
       <p>…</p>
     </section>
 
-    <section id="request-response">
+    <section #sections id="request-response">
       <h2>Request &amp; Response</h2>
       <p>…</p>
     </section>
 
-    <section id="authentication">
+    <section #sections id="authentication">
       <h2>Authentication</h2>
       <p>…</p>
     </section>
 
-    <section id="endpoints">
+    <section #sections id="endpoints">
       <h2>Endpoints</h2>
 
-      <section id="endpoints--root">
+      <section #sections id="endpoints--root">
         <h3>Root</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--cities-overview">
+      <section #sections id="endpoints--cities-overview">
         <h3>Cities Overview</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-detail">
+      <section #sections id="endpoints--city-detail">
         <h3>City Detail</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-config">
+      <section #sections id="endpoints--city-config">
         <h3>City Config</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-spots-overview">
+      <section #sections id="endpoints--city-spots-overview">
         <h3>City Spots Overview</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-spot-detail">
+      <section #sections id="endpoints--city-spot-detail">
         <h3>City Spot Detail</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-icons-overview">
+      <section #sections id="endpoints--city-icons-overview">
         <h3>City Icons Overview</h3>
         <p>…</p>
       </section>
 
-      <section id="endpoints--city-icon-detail">
+      <section #sections id="endpoints--city-icon-detail">
         <h3>City Icon Detail</h3>
         <p>…</p>
       </section>
 
     </section>
 
-    <section id="links">
+    <section #sections id="links">
       <h2>Links</h2>
       <p>…</p>
     </section>
 
-    <section id="expanders">
+    <section #sections id="expanders">
       <h2>Expanders</h2>
       <p>…</p>
     </section>
 
-    <section id="formarray">
+    <section #sections id="formarray">
       <h2>Form Array</h2>
 
       <br>
@@ -96,7 +96,7 @@
           <div *ngFor="let unit of navigationForm.get('units')['controls']; let x = index;">
             <div  [formGroupName]="x">
 
-              <section id="{{'formarray--'+ x}}">
+              <section #sections id="{{'formarray--'+ x}}">
                 <h3>{{ unit.value.customerName ? unit.value.customerName : 'Unfilled' }}</h3>
 
 
@@ -227,7 +227,7 @@
 
     </section>
 
-    <section id="filters">
+    <section #sections id="filters">
       <h2>Filters</h2>
       <p>…</p>
     </section>
