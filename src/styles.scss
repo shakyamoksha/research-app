@@ -38,3 +38,38 @@
 .mat-form-field-appearance-outline .mat-form-field-wrapper {
   margin: 0.50em 0;
 }
+
+// Start header and content formatting
+.h4-section-title{
+  margin-top: 30px;
+  font-weight: bold !important;
+}
+
+.h4-sub-section-title{
+  margin-top: 10px;
+  font-weight: normal;
+}
+
+.section-content{
+  border-left: 3px solid #000000;
+  padding-left: 0;
+}
+
+.section-sub-content{
+  margin-left: 1rem;
+}
+// End header and content formatting
+
+.numerical-input{
+  text-align: right !important;
+}
+
+.content-direction {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+
+.right{
+  float:right;
+}

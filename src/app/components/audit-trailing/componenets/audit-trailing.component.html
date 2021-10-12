@@ -1,0 +1,122 @@
+<form [formGroup]="auditForm">
+
+  <div style="margin: 2% 2.5% 0 2.5%;">
+
+    <div class="row">
+      <div class="col-70"></div>
+      <div class="col-30 content-direction right">
+        <button mat-raised-button (click)="triggerAudit()">Audit</button>
+      </div>
+    </div>
+
+    <h3 class="h4-section-title">Audit form</h3>
+
+    <div class="section-content">
+      <div class="section-sub-content">
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Customer Name</mat-label>
+              <input class="mat-input-value" formControlName="customerName" matInput>
+            </mat-form-field>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Customer Number</mat-label>
+              <input class="mat-input-value" formControlName="customerNumber" matInput>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+            <div class="content-direction" style="float: left;">
+              <button (click)="triggerAudit()"
+                mat-mini-fab type="button" style="margin-right: 5px;" color="secondary" matTooltip="Trigger Audit">
+                <mat-icon>bug_report</mat-icon>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Phone Number</mat-label>
+              <input class="mat-input-value" formControlName="phoneNo" matInput>
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6">
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Description</mat-label>
+              <textarea
+                style="box-sizing:content-box;"
+                class="mat-input-value"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="3"
+                matInput
+                formControlName="description">
+              </textarea>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Email</mat-label>
+              <input class="mat-input-value" formControlName="email" matInput>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Height</mat-label>
+              <input class="mat-input-value" formControlName="height" matInput>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <mat-form-field appearance="outline" style="width: 99%;">
+              <mat-label>Body Mass Index</mat-label>
+              <input class="mat-input-value" formControlName="BMI" matInput>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</form>

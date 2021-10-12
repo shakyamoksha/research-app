@@ -5,8 +5,12 @@ import { DashboardComponent } from './component/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent, children: [
-    {path: 'advancedscroll', loadChildren: () => import('../components/advanced-scrollspy/advanced-scrollspy.module').then(m => m.AdvancedScrollspyModule)},
-    {path: 'simplescroll', loadChildren: () => import('../components/simple-scrollspy/simple-scrollspy.module').then(m => m.SimpleScrollspyModule)}
+    {path: 'advancedscroll',
+      loadChildren: () => import('../components/advanced-scrollspy/advanced-scrollspy.module').then(m => m.AdvancedScrollspyModule)},
+    {path: 'simplescroll',
+      loadChildren: () => import('../components/simple-scrollspy/simple-scrollspy.module').then(m => m.SimpleScrollspyModule)},
+    {path: 'audittrail',
+      loadChildren: () => import('../components/audit-trailing/audit-trailing.module').then(m => m.AuditTrailingModule)},
   ]}
 ];
 
