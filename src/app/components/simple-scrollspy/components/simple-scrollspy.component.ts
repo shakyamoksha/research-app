@@ -17,6 +17,12 @@ export class SimpleScrollspyComponent implements OnInit {
     this.navLinks = this._elementRef.nativeElement.querySelectorAll('header nav a');
   }
 
+  getValueFromLastCharacter(){
+    const input = 'https://www.codegrepper.com/code-examples/javascript/how+to+slice+a+string+in+javascript+with+comma';
+    const charPos = input.lastIndexOf('/');
+    const id = input.substr(charPos + 1);
+  }
+
   @HostListener('window:scroll', ['$event']) onScroll(event) {
     for (const section of this.sections) {
       const top = window.scrollY;
