@@ -36,15 +36,23 @@
 
       <span class="spacer"></span>
 
-      <button mat-button routerLink="/advancedscroll" matTooltip="Advanced">
-        <mat-icon>whatshot</mat-icon>
-        Advanced Spy
+      <button mat-button routerLink="/audittrail" matTooltip="Simple">
+        <mat-icon>history</mat-icon>
+        Audit
       </button>
 
-      <button mat-button routerLink="/simplescroll" matTooltip="Simple">
-        <mat-icon>nature</mat-icon>
-        Simple Spy
-      </button>
+
+      <button mat-button [matMenuTriggerFor]="spyMenu">Scroll Spies</button>
+      <mat-menu #spyMenu="matMenu">
+        <button mat-menu-item routerLink="/advancedscroll">
+          <mat-icon>whatshot</mat-icon>
+          <span>Advanced</span>
+        </button>
+        <button mat-menu-item routerLink="/simplescroll">
+          <mat-icon>nature</mat-icon>
+          <span>Simple</span>
+        </button>
+      </mat-menu>
 
     </mat-toolbar>
 
