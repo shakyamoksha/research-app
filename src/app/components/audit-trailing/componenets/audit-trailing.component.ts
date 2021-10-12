@@ -110,7 +110,6 @@ export class AuditTrailingComponent implements OnInit {
 
   private setInitialValues() {
     this.auditInit = this.auditForm.getRawValue();
-    console.log(this.auditInit);
   }
 
 }
