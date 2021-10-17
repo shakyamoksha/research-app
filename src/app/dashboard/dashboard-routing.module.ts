@@ -6,6 +6,7 @@ import { DashboardComponent } from './component/dashboard.component';
 const routes: Routes = [
   {path: '', component: DashboardComponent, children:
       [
+        {path: '', redirectTo: 'stickytable', pathMatch: 'full' },
         {path: 'advancedscroll',
           loadChildren: () => import('../components/advanced-scrollspy/advanced-scrollspy.module').then(m => m.AdvancedScrollspyModule)},
         {path: 'simplescroll',
