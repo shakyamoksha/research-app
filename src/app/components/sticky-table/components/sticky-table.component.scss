@@ -10,3 +10,15 @@
 table {
   width: 100%;
 }
+
+.sticky{
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  z-index: 100;
+}
+
+//.content{
+//  height: 200vh;
+//}
+

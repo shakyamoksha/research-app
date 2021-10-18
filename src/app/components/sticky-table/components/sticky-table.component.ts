@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-sticky-table',
   templateUrl: './sticky-table.component.html',
   styleUrls: ['./sticky-table.component.scss']
 })
-export class StickyTableComponent implements OnInit {
+export class StickyTableComponent implements OnInit, AfterViewInit {
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
   constructor() { }
+
+  @ViewChild('stickyMenu', {static: false}) tableElement: ElementRef;
+  isSticky = false;
+  tablePosition: any;
+
+  ngAfterViewInit() {
+    this.tablePosition = this.tableElement.nativeElement.offsetTop;
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  handleScroll() {
+    const windowScroll = window.pageYOffset;
+
+    console.log(windowScroll, this.tablePosition);
+
+    this.isSticky = windowScroll >= this.tablePosition;
+  }
 
   ngOnInit(): void {
   }
