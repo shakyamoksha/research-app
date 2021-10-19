@@ -36,19 +36,22 @@
 
       <span class="spacer"></span>
 
-      <button mat-button routerLink="/horizontaltable">
-        Horizontal Table
-      </button>
-
-      <button mat-button routerLink="/stickytable">
-        Sticky Table
-      </button>
-
       <button mat-button routerLink="/audittrail">
         <mat-icon>history</mat-icon>
         Audit
       </button>
 
+      <button mat-button [matMenuTriggerFor]="tablesMenu">Table Concepts (WIP)</button>
+      <mat-menu #tablesMenu="matMenu">
+        <button mat-menu-item routerLink="/horizontaltable">
+          <mat-icon>table_chart</mat-icon>
+          <span>Horizontal Table</span>
+        </button>
+        <button mat-menu-item routerLink="/stickytable">
+          <mat-icon>table_rows</mat-icon>
+          <span>Sticky Table</span>
+        </button>
+      </mat-menu>
 
       <button mat-button [matMenuTriggerFor]="spyMenu">Scroll Spies</button>
       <mat-menu #spyMenu="matMenu">
