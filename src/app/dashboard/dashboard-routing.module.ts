@@ -14,7 +14,9 @@ const routes: Routes = [
         {path: 'audittrail',
           loadChildren: () => import('../components/audit-trailing/audit-trailing.module').then(m => m.AuditTrailingModule)},
         {path: 'stickytable',
-          loadChildren: () => import('../components/sticky-table/sticky-table.module').then(m => m.StickyTableModule)}
+          loadChildren: () => import('../components/sticky-table/sticky-table.module').then(m => m.StickyTableModule)},
+        {path: 'horizontaltable',
+          loadChildren: () => import('../components/horizontal-table/horizontal-table.module').then(m => m.HorizontalTableModule)}
       ]
   }
 ];
