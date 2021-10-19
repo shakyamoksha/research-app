@@ -7,7 +7,7 @@ import {
   ElementRef,
   HostListener,
   OnDestroy,
-  OnInit, QueryList, ViewChildren
+  OnInit, QueryList, ViewChild, ViewChildren
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import {Router} from '@angular/router';
@@ -24,6 +24,13 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
   navigationForm: FormGroup;
 
   @ViewChildren('sections') sections: QueryList<ElementRef>;
+
+  // Sticky Button
+  @ViewChild('buttonRowElement', {static: false}) buttonRowElement: ElementRef;
+  @ViewChild('formArrayElement', {static: false}) formArrayElement: ElementRef;
+  isSticky = false;
+  buttonRowPositions: {top: number; bottom: number; };
+  formArrayPositions: {top: number; bottom: number; };
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -45,6 +52,10 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
 
   ngAfterViewInit() {
     this.getNavigation();
+
+
+    this.updateFormArrayPositions();
+    this.updateButtonRowPositions();
   }
 
   ngOnDestroy() {
@@ -81,6 +92,9 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
     this.sections.forEach(vector => {
       this.observer.observe(vector.nativeElement);
     });
+
+    // determine when to apply the fake sticky property
+    this.isSticky = this.formArrayPositions.bottom >= window.pageYOffset && window.pageYOffset >= this.buttonRowPositions.top;
   }
 
   scrollTo(fragment: string): void {
@@ -137,9 +151,24 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
   addUnit() {
     const control = this.navigationForm.controls[`units`] as FormArray;
     control.push(this.getUnit());
+
     setTimeout(() => {
+      this.updateFormArrayPositions();
       this.getNavigation();
     }, 25);
+  }
+
+  updateFormArrayPositions() {
+    this.formArrayPositions = {
+      top: this.formArrayElement.nativeElement.offsetTop,
+      bottom: this.formArrayElement.nativeElement.offsetHeight + this.formArrayElement.nativeElement.offsetTop
+    };
+  }
+  updateButtonRowPositions() {
+    this.buttonRowPositions = {
+      top: this.buttonRowElement.nativeElement.offsetTop,
+      bottom: this.buttonRowElement.nativeElement.offsetTop + this.buttonRowElement.nativeElement.offsetHeight
+    };
   }
 
   /*** Remove unit row from form on click delete button **/
@@ -147,6 +176,7 @@ export class AdvancedScrollspyComponent implements OnInit, AfterViewChecked, Aft
     const control = this.navigationForm.controls[`units`] as FormArray;
     control.removeAt(x);
     setTimeout(() => {
+      this.updateFormArrayPositions();
       this.getNavigation();
     }, 25);
   }

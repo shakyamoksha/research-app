@@ -70,3 +70,12 @@ main {
 section {
   padding-bottom: 20rem;
 }
+
+
+.sticky{
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  z-index: 100;
+  transition: all 50ms ease-in-out !important;
+}
